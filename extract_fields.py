@@ -6,18 +6,27 @@ Created on Tue Mar 23 23:21:19 2021
 """
 import re
 
-def get_default_fields():
+
+def get_missing_default_fields():
     given_data_type = ''
     given_length = ''
     error_code = 'E05'
     
     return given_data_type, given_length, error_code
+
+
+def get_empty_default_fields():
+    given_data_type = ''
+    given_length = ''
+    error_code = 'E04'
+    
+    return given_data_type, given_length, error_code
     
 
 def get_data_type(row_array, index):
-    if bool(re.match("^[0-9]*$", ' ')):
-        return 'digit'
-    elif bool(re.match("^[A-Za-z]*$", ' ')):
+    if bool(re.match("^[0-9]*$", row_array[index])):
+        return 'digits'
+    elif bool(re.match("^[A-Za-z]*$", row_array[index])):
         return 'word_characters'
     else:
         return 'other'

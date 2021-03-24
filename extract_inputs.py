@@ -16,7 +16,7 @@ def fetch_json_file_data(filename):
 
 def fetch_input_file_data(filename):
     input_data = []
-    with open('input_file.txt', "r") as input_file:
+    with open(filename, "r") as input_file:
         input_data = input_file.read().split('\n')
         
     return input_data

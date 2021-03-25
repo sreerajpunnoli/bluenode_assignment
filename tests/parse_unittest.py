@@ -44,7 +44,7 @@ def get_stored_report(settings):
         reader = csv.reader(f)
         stored_report = list(reader)
         for row in stored_report[2:]:
-            row[-2] = int(row[-2]) if row[-3] else ''
+            row[-2] = int(row[-2]) if row[-2] else ''
             row[-3] = int(row[-3]) if row[-3] else ''
             converted_stored_report.append(row)
     return converted_stored_report

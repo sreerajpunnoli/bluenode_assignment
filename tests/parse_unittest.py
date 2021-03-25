@@ -2,16 +2,13 @@
 import os
 import csv
 import unittest
-import sys
-
-path_list = os.getcwd().split(os.sep)[:-1]
-parent_path = os.sep.join(path_list)
-if parent_path not in sys.path:
-    sys.path.append(parent_path)
-
+#import sys
+#path_list = os.getcwd().split(os.sep)[:-1]
+#parent_path = os.sep.join(path_list)
+#if parent_path not in sys.path:
+#    sys.path.append(parent_path)
 import parse_bluenode_data
 
-#%%
 def get_test_settings():
     settings = {}
     # File paths
@@ -49,23 +46,21 @@ def get_stored_summary(settings):
     return stored_summary
 
 
-#%%
-
 class ParseTest(unittest.TestCase):
 
-    def test_summary(self, settings, report):
+    def test_report(self, settings, report):
         stored_report = get_stored_report(settings)
-        self.assertEqual(stored_report, 6, "Should be 6")
+        self.assertEqual(stored_report, report, "Report not parsed properly!")
 
-    def test_report(self, settings, summary):
+    def test_summary(self, settings, summary):
         stored_summary = get_stored_summary(settings)
-        self.assertEqual(stored_summary, summary, "Should be 6")
+        self.assertEqual(stored_summary, summary, "Summary not parsed properly!")
         
     def get_inputs(self):
         settings = get_test_settings()
         converted_report_list, summary_string = get_parsed_data(settings)
-        self.test_summary(settings, converted_report_list)
-        self.test_report(settings, summary_string)
+        self.test_report(settings, converted_report_list)
+        self.test_summary(settings, summary_string)
 
 
 if __name__ == '__main__':

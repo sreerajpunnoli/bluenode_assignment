@@ -9,6 +9,7 @@ import unittest
 #    sys.path.append(parent_path)
 import parse_bluenode_data
 
+
 def get_test_settings():
     settings = {}
     # File paths
@@ -26,12 +27,14 @@ def get_test_settings():
     
     return settings
 
+
 def get_parsed_data(settings):
     input_data, error_codes, standard_definition = parse_bluenode_data.fetch_input_files(settings)
     error_code_dict, standard_definition_dict = parse_bluenode_data.convert_lists_to_dicts(error_codes, standard_definition, settings)
     converted_report_list, summary_string = parse_bluenode_data.parse_data_obj.parse_input(input_data, error_code_dict, standard_definition_dict)
     
     return converted_report_list, summary_string
+
 
 def get_stored_report(settings):
     with open(settings['report_file_path'], newline='') as f:

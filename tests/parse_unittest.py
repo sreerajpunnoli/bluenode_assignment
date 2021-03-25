@@ -13,7 +13,7 @@ import parse_bluenode_data
 def get_test_settings():
     settings = {}
     # File paths
-    settings['input_file_path'] = os.path.join('tests', 'sample', 'inputs', 'input_file.txt')    
+    settings['input_file_path'] = os.path.join('tests', 'sample', 'input', 'input_file.txt')    
     settings['error_code_file_path'] = os.path.join('inputs', 'error_codes.json')
     settings['standard_definition_file_path'] = os.path.join('inputs', 'standard_definition.json')
     settings['report_file_path'] = os.path.join('tests', 'sample', 'parsed', 'report.csv')

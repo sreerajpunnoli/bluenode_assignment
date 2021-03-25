@@ -50,20 +50,16 @@ def get_stored_summary(settings):
 
 
 class ParseTest(unittest.TestCase):
-
-    def test_report(self, settings, report):
-        stored_report = get_stored_report(settings)
-        self.assertEqual(stored_report, report, "Report not parsed properly!")
-
-    def test_summary(self, settings, summary):
-        stored_summary = get_stored_summary(settings)
-        self.assertEqual(stored_summary, summary, "Summary not parsed properly!")
         
-    def get_inputs(self):
+    def test_parse(self):
         settings = get_test_settings()
         converted_report_list, summary_string = get_parsed_data(settings)
-        self.test_report(settings, converted_report_list)
-        self.test_summary(settings, summary_string)
+        
+        stored_report = get_stored_report(settings)
+        self.assertEqual(stored_report, converted_report_list, "Report not parsed properly!")
+        
+        stored_summary = get_stored_summary(settings)
+        self.assertEqual(stored_summary, summary_string, "Summary not parsed properly!")
 
 
 if __name__ == '__main__':

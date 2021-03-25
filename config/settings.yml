@@ -1,0 +1,12 @@
+## File paths
+# input_file_path: inputs/input_file.txt
+# error_code_file_path: inputs/error_codes.json
+# standard_definition_file_path: inputs/standard_definition.json
+# report_file_path: parsed/report.csv
+# summary_file_path: parsed/summary.txt
+
+## Dictionary keys
+# error_code_key: code
+# error_code_value_key: message_template
+# standard_definition_key: key
+# standard_definition_value_key: sub_sections

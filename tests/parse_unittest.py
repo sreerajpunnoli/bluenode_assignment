@@ -39,10 +39,15 @@ def get_parsed_data(settings):
 
 
 def get_stored_report(settings):
+    converted_stored_report = []
     with open(settings['report_file_path'], newline='') as f:
         reader = csv.reader(f)
         stored_report = list(reader)
-    return stored_report[2:]
+        for row in stored_report[2:]:
+            row[-2] = int(row[-2]) if row[-3] else ''
+            row[-3] = int(row[-3]) if row[-3] else ''
+            converted_stored_report.append(row)
+    return converted_stored_report
 
 
 def get_stored_summary(settings):

@@ -7,9 +7,11 @@ Created on Tue Mar 23 00:56:21 2021
 
 #%%
 from bluenode.load_settings import load_settings_obj
-from bluenode.extract_input_files import extract_input_files_obj
 from bluenode.parse_data import parse_data_obj
 from bluenode.write_results import write_results_obj
+
+from extract_input_files import extract_input_files_obj
+
 import logging
 import os
 

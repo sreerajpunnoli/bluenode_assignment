@@ -7,7 +7,7 @@ Created on Tue Mar 23 23:38:51 2021
 import json
 
 
-class ExtractInputFiles:
+class ExtractInputFilesData:
     
     def fetch_json_file_data(self, filename):
         ''' Fetch json file data and return it as dictionary '''
@@ -32,4 +32,4 @@ class ExtractInputFiles:
     
 
 # Singleton Object
-extract_input_files_obj = ExtractInputFiles()
+extract_input_files_data_obj = ExtractInputFilesData()

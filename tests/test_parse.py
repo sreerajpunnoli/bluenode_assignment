@@ -2,14 +2,8 @@
 import os
 import csv
 import unittest
-import sys
-
-path_list = os.getcwd().split(os.sep)[:-1]
-parent_path = os.sep.join(path_list)
-if parent_path not in sys.path:
-    sys.path.append(parent_path)
-
 import parse_bluenode_data
+
 
 settings = {}
 converted_report_list = []

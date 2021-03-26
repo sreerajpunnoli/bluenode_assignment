@@ -9,7 +9,7 @@ Created on Tue Mar 23 00:56:21 2021
 from bluenode.load_settings import load_settings_obj
 from bluenode.parse_data import parse_data_obj
 from bluenode.write_results import write_results_obj
-from bluenode.extract_input_files import extract_input_files_obj
+from bluenode.extract_input_files_data import extract_input_files_data_obj
 
 import logging
 import os
@@ -26,9 +26,9 @@ def fetch_input_files(settings):
     ''' This method fetches the input_data, error_codes and standard_definition files '''
     logging.debug('Fetching input files')
     try:
-        input_data = extract_input_files_obj.fetch_input_file_data(settings['input_file_path'])
-        error_codes = extract_input_files_obj.fetch_json_file_data(settings['error_code_file_path'])
-        standard_definition = extract_input_files_obj.fetch_json_file_data(settings['standard_definition_file_path'])
+        input_data = extract_input_files_data_obj.fetch_input_file_data(settings['input_file_path'])
+        error_codes = extract_input_files_data_obj.fetch_json_file_data(settings['error_code_file_path'])
+        standard_definition = extract_input_files_data_obj.fetch_json_file_data(settings['standard_definition_file_path'])
     except Exception as e:
         logging.error('Error while fetching input files', e)
         raise
@@ -42,9 +42,9 @@ def convert_lists_to_dicts(error_codes, standard_definition, settings):
     
     logging.debug('Converting lists to dictionaries started')
     try:
-        error_code_dict = extract_input_files_obj.convert_list_to_dict(error_codes, settings['error_code_key'], \
+        error_code_dict = extract_input_files_data_obj.convert_list_to_dict(error_codes, settings['error_code_key'], \
                                                                 settings['error_code_value_key'])
-        standard_definition_dict = extract_input_files_obj.convert_list_to_dict(standard_definition, settings['standard_definition_key'], \
+        standard_definition_dict = extract_input_files_data_obj.convert_list_to_dict(standard_definition, settings['standard_definition_key'], \
                                                                 settings['standard_definition_value_key'])
     except Exception as e:
         logging.error('Error while converting error codes and standard definition', e)

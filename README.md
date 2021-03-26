@@ -4,9 +4,9 @@ This repositoy is for the development of bluenode data parsing system. It uses p
 Installation
 ------------
 
-.. code-block:: bash
 
     $ pip install -r requirements.txt
+
 
 
 Modules
@@ -46,9 +46,8 @@ Running
 Default input files are stored in inputs directory. The settings.yml file in config directory can be used to specify different input files and output files location. Once the files are specified properly, use the below command to start parsing the input file
 
 
-.. code-block:: bash
-
     $ python parse_bluenode_data.py
+
 
 
 Unit Tests
@@ -56,6 +55,5 @@ Unit Tests
 
 Unit tests tests the parsing process. It checks whether the summary and eport are created as per requirement. Unit tests can be run using the following command.
 
-.. code-block:: bash
 
     $ python -m tests.test_parse.py

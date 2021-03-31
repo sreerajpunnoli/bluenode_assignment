@@ -56,4 +56,4 @@ Unit Tests
 Unit tests tests the parsing process. It checks whether the summary and eport are created as per requirement. Unit tests can be run using the following command.
 
 
-    $ python -m tests.test_parse.py
+    $ python -m tests.test_parse

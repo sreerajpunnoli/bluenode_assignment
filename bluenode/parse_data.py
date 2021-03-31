@@ -32,38 +32,40 @@ class ParseData:
         summary = ''
         
         for row in input_data:
-            row_array = row.split('&')
-            if not row_array:
-                continue
-            
-            section = row_array[0].upper()
-            
-            index = 0
-            for sub_section_dict in standard_definition_dict[section]:
-                index += 1
+            try:
+                row_array = row.split('&')
+                if not row_array:
+                    continue
                 
-                sub_section = sub_section_dict['key'].upper()
-                expected_data_type = sub_section_dict['data_type']
-                expected_max_length = sub_section_dict['max_length']
+                section = row_array[0].upper()
                 
-                given_data_type, given_length, error_code = self.get_other_fields(row_array, index, \
-                                                                    expected_data_type, expected_max_length)
+                index = 0
+                for sub_section_dict in standard_definition_dict[section]:
+                    index += 1
+                    
+                    sub_section = sub_section_dict['key'].upper()
+                    expected_data_type = sub_section_dict['data_type']
+                    expected_max_length = sub_section_dict['max_length']
+                    
+                    given_data_type, given_length, error_code = self.get_other_fields(row_array, index, \
+                                                                        expected_data_type, expected_max_length)
+                    
+                    # Report row creation
+                    row = [section, sub_section, given_data_type, expected_data_type, \
+                                       given_length, expected_max_length, error_code]
+                    converted_report_list.append(row)
+                    
+                    # Summary row creation
+                    row_summary = error_code_dict[error_code].replace('LXY', sub_section) \
+                                    .replace('LX', section).replace('{data_type}', expected_data_type) \
+                                    .replace('{max_length}', str(expected_max_length))
+                    # add new line charactor after each subsection
+                    summary += row_summary + '\n'
                 
-                # Report row creation
-                row = [section, sub_section, given_data_type, expected_data_type, \
-                                   given_length, expected_max_length, error_code]
-                converted_report_list.append(row)
-                
-                # Summary row creation
-                row_summary = error_code_dict[error_code].replace('LXY', sub_section) \
-                                .replace('LX', section).replace('{data_type}', expected_data_type) \
-                                .replace('{max_length}', str(expected_max_length))
-                # add new line charactor after each subsection
-                summary += row_summary + '\n'
-            
-            # add new line charactor after each section
-            summary += '\n'
-            
+                # add new line charactor after each section
+                summary += '\n'
+            except:
+                pass
         # Remove two unwanted new line charactor from the end
         summary = summary[:-2]
 
